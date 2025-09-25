@@ -24,7 +24,17 @@ A Chrome extension that allows users to easily copy YouTube video transcripts wi
 
 ### For Production
 
-*Note: This extension is not yet published on Chrome Web Store. Follow the development installation steps above.*
+**Download the latest release:**
+- [chrome-extension-yt-transcript-fetcher-v1.2.0.zip](chrome-extension-yt-transcript-fetcher-v1.2.0.zip)
+
+1. Download the ZIP file above
+2. Extract the contents
+3. Open Chrome and navigate to `chrome://extensions/`
+4. Enable "Developer mode" in the top right corner
+5. Click "Load unpacked"
+6. Select the extracted extension directory
+
+*Note: This extension is not yet published on Chrome Web Store. Use the manual installation method above.*
 
 ## Usage
 
