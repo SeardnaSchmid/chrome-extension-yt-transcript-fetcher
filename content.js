@@ -1,7 +1,6 @@
 console.log('Content script loaded for YouTube Transcript Fetcher v1.0'); // Debug log
 
-// Firefox compatibility layer - use browser API
-const browserAPI = typeof browser !== 'undefined' ? browser : chrome;
+// Use Chrome APIs directly
 
 // Debug function to check current page state
 const debugPageState = () => {
@@ -356,7 +355,7 @@ const addCopyButton = async () => {
   copyButton.addEventListener("click", async () => {
     try {
       // Get current settings
-      const settings = await browserAPI.storage.sync.get({
+      const settings = await chrome.storage.sync.get({
         includeTimestamps: true,
         redirectToChatGPT: true,
         redirectDestination: 'chatgpt',
@@ -760,7 +759,7 @@ const showPromptSelectorDialog = async () => {
         previewText = "Transcript will be copied as-is without any prompt or formatting.";
       } else if (promptType.key === 'custom') {
         // Try to get custom prompt from storage
-        browserAPI.storage.sync.get({ customPromptText: '' }).then(settings => {
+        chrome.storage.sync.get({ customPromptText: '' }).then(settings => {
           if (settings.customPromptText) {
             previewContent.textContent = settings.customPromptText;
           } else {
@@ -791,7 +790,7 @@ const showPromptSelectorDialog = async () => {
       } else {
         try {
           // Update the prompt type in storage
-          await browserAPI.storage.sync.set({
+          await chrome.storage.sync.set({
             promptType: promptType.key
           });
 
@@ -824,7 +823,7 @@ const showPromptSelectorDialog = async () => {
         previewText = "Transcript will be copied as-is without any prompt or formatting.";
       } else if (promptType.key === 'custom') {
         // Try to get custom prompt from storage
-        const settings = await browserAPI.storage.sync.get({ customPromptText: '' });
+        const settings = await chrome.storage.sync.get({ customPromptText: '' });
         if (settings.customPromptText) {
           previewText = settings.customPromptText;
         } else {
@@ -854,7 +853,7 @@ const showPromptSelectorDialog = async () => {
 
   // Get current prompt type
   try {
-    const settings = await browserAPI.storage.sync.get({
+    const settings = await chrome.storage.sync.get({
       promptType: 'none'
     });
     const currentPrompt = promptTypes.find(p => p.key === settings.promptType);
@@ -1033,7 +1032,7 @@ const showCustomPromptDialog = async (parentDialog) => {
 
   // Load existing custom prompt if any
   try {
-    const settings = await browserAPI.storage.sync.get({
+    const settings = await chrome.storage.sync.get({
       customPromptText: ''
     });
     textarea.value = settings.customPromptText || '';
@@ -1092,7 +1091,7 @@ const showCustomPromptDialog = async (parentDialog) => {
       }
 
       // Save custom prompt and set prompt type to custom
-      await browserAPI.storage.sync.set({
+      await chrome.storage.sync.set({
         promptType: 'custom',
         customPromptText: customPromptText
       });
@@ -1146,7 +1145,7 @@ const redirectToDestination = async (destination, transcriptText, autoPaste) => 
     
     if (autoPaste && transcriptText) {
       // Store the transcript text for auto-pasting
-      await browserAPI.storage.local.set({
+      await chrome.storage.local.set({
         autoPasteText: transcriptText,
         autoPasteDestination: destination,
         autoPasteTimestamp: Date.now()
@@ -1176,7 +1175,7 @@ const redirectToDestination = async (destination, transcriptText, autoPaste) => 
     console.log('Opening URL:', url);
     
     // Send message to background script to open tab
-    const response = await browserAPI.runtime.sendMessage({
+    const response = await chrome.runtime.sendMessage({
       action: 'openTab',
       url: url
     });

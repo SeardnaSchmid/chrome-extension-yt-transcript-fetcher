@@ -1,5 +1,4 @@
-// Firefox compatibility layer - use browser API
-const browserAPI = typeof browser !== 'undefined' ? browser : chrome;
+// Use Chrome APIs directly
 
 const TRANSLATIONS = {
   en: {
@@ -116,7 +115,7 @@ const saveOptions = () => {
   const llmModel = document.getElementById('llmModel').value;
   const customCharLimit = parseInt(document.getElementById('customCharLimit').value) || 13000;
   
-  browserAPI.storage.sync.set(
+  chrome.storage.sync.set(
     {
       includeTimestamps,
       redirectToChatGPT,
@@ -139,7 +138,7 @@ const saveOptions = () => {
 };
 
 const restoreOptions = () => {
-  browserAPI.storage.sync.get(
+  chrome.storage.sync.get(
     {
       includeTimestamps: true,
       redirectToChatGPT: true,

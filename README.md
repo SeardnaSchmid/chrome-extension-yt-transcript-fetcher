@@ -1,6 +1,6 @@
-# YouTube Transcript Fetcher - Firefox Extension
+# YouTube Transcript Fetcher - Chrome Extension
 
-A Firefox extension that allows users to easily copy YouTube video transcripts with one click, featuring multi-language support, customizable prompts, and intelligent text splitting for AI models.
+A Chrome extension that allows users to easily copy YouTube video transcripts with one click, featuring multi-language support, customizable prompts, and intelligent text splitting for AI models.
 
 ## Features
 
@@ -17,14 +17,14 @@ A Firefox extension that allows users to easily copy YouTube video transcripts w
 ### For Development
 
 1. Clone or download this repository
-2. Open Firefox and navigate to `about:debugging`
-3. Click "This Firefox"
-4. Click "Load Temporary Add-on"
-5. Select the `manifest.json` file from the extension directory
+2. Open Chrome and navigate to `chrome://extensions/`
+3. Enable "Developer mode" in the top right corner
+4. Click "Load unpacked"
+5. Select the extension directory containing `manifest.json`
 
 ### For Production
 
-*Note: This extension is not yet published on Mozilla Add-ons. Follow the development installation steps above.*
+*Note: This extension is not yet published on Chrome Web Store. Follow the development installation steps above.*
 
 ## Usage
 
@@ -66,14 +66,20 @@ A Firefox extension that allows users to easily copy YouTube video transcripts w
 ## Technical Details
 
 ### Browser Compatibility
-- Firefox 57.0+
-- Uses Manifest V2 for Firefox compatibility
-- Cross-browser API compatibility layer
+- Chrome 88.0+
+- Uses Manifest V3 for Chrome compatibility
+- Native Chrome APIs
 
 ### Permissions
-- `clipboardWrite`: Copy text to clipboard
 - `storage`: Save user preferences
+- `tabs`: Open new tabs for AI services
+- `activeTab`: Access current YouTube page
 - `https://www.youtube.com/*`: Access YouTube pages
+- `https://chatgpt.com/*`: Auto-paste to ChatGPT
+- `https://github.com/*`: Auto-paste to GitHub Copilot
+- `https://claude.ai/*`: Auto-paste to Claude
+- `https://gemini.google.com/*`: Auto-paste to Gemini
+- `https://chat.mistral.ai/*`: Auto-paste to Mistral
 
 ### Architecture
 - **Content Script**: Integrates with YouTube's interface
@@ -85,11 +91,14 @@ A Firefox extension that allows users to easily copy YouTube video transcripts w
 
 ### Project Structure
 ```
-firefox-extension-yt-transcript-fetcher/
-├── manifest.json          # Extension manifest
+chrome-extension-yt-transcript-fetcher/
+├── manifest.json          # Extension manifest (Manifest V3)
+├── background.js          # Service worker
 ├── content.js            # Main content script
 ├── popup.html           # Settings popup interface
 ├── popup.js             # Popup functionality
+├── chatgpt-autopaste.js # Auto-paste for ChatGPT/Claude/Gemini/Mistral
+├── github-autopaste.js  # Auto-paste for GitHub Copilot
 ├── icons/               # Extension icons
 │   ├── icon16.png
 │   ├── icon32.png
@@ -105,7 +114,9 @@ firefox-extension-yt-transcript-fetcher/
 - `createNotificationSystem()`: Provides user feedback
 
 ### Browser API Usage
-- `browser.storage.sync`: Cross-browser storage API
+- `chrome.storage.sync`: Chrome storage API
+- `chrome.tabs.create`: Open new tabs
+- `chrome.runtime.sendMessage`: Communication between scripts
 - `navigator.clipboard`: Modern clipboard API
 - `MutationObserver`: Monitors YouTube's dynamic content
 
@@ -139,7 +150,19 @@ This project is open source. Please ensure compliance with YouTube's Terms of Se
 
 ## Changelog
 
-### Version 1.0.0
+### Version 1.2.0 (Chrome Release)
+- **NEW**: Converted from Firefox to Chrome extension
+- **NEW**: Chrome Manifest V3 support
+- **NEW**: Auto-paste functionality for AI services
+- **NEW**: Support for ChatGPT, Claude, Gemini, Mistral, GitHub Copilot
+- **IMPROVED**: Native Chrome APIs for better performance
+- **IMPROVED**: Enhanced auto-redirect functionality
+- Multi-language support (EN, PT, ES)
+- Smart text splitting
+- Customizable prompts
+- Chrome compatibility
+
+### Version 1.0.0 (Firefox)
 - Initial release
 - Multi-language support (EN, PT, ES)
 - Smart text splitting

@@ -1,12 +1,11 @@
-// Firefox compatibility layer - use browser API
-const browserAPI = typeof browser !== 'undefined' ? browser : chrome;
+// Use Chrome APIs directly
 
 console.log('GitHub Copilot auto-paste script loaded');
 
 const autoPasteOnGitHub = async () => {
   try {
     // Check if we have text to paste
-    const result = await browserAPI.storage.local.get(['autoPasteText', 'autoPasteDestination', 'autoPasteTimestamp']);
+    const result = await chrome.storage.local.get(['autoPasteText', 'autoPasteDestination', 'autoPasteTimestamp']);
     
     // Only auto-paste if:
     // 1. We have text to paste
@@ -200,7 +199,7 @@ const autoPasteOnGitHub = async () => {
       }, 500);
       
       // Clear the stored text so it doesn't paste again
-      await browserAPI.storage.local.remove(['autoPasteText', 'autoPasteDestination', 'autoPasteTimestamp']);
+      await chrome.storage.local.remove(['autoPasteText', 'autoPasteDestination', 'autoPasteTimestamp']);
       
     } catch (error) {
       console.error('Failed to find or fill textarea:', error);
