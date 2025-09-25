@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "YouTube Transcript & Summary v1.2.0",
   "version": "1.2.0",
-  "description": "Extract and summarize YouTube video transcripts instantly! Copy transcripts and generate AI-powered summaries with multiple prompt options.",
+  "description": "Extract and summarize YouTube video transcripts instantly! Copy transcripts and generate AI summaries with multiple prompts.",
   "permissions": [
     "storage",
     "tabs",
