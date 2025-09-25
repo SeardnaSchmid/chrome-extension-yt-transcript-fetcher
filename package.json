@@ -1,0 +1,43 @@
+{
+  "name": "firefox-extension-yt-transcript-fetcher",
+  "version": "1.2.0",
+  "description": "Extract and summarize YouTube video transcripts instantly! Copy transcripts and generate AI-powered summaries with multiple prompt options.",
+  "main": "content.js",
+  "scripts": {
+    "build": "echo 'Building Firefox extension...'",
+    "package": "web-ext build --source-dir=. --artifacts-dir=dist",
+    "start": "web-ext run --source-dir=.",
+    "lint": "web-ext lint --source-dir=."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seardnaschmid/firefox-extension-yt-transcript-fetcher.git"
+  },
+  "keywords": [
+    "firefox",
+    "extension",
+    "youtube",
+    "transcript",
+    "summary",
+    "ai",
+    "chatgpt",
+    "claude",
+    "gemini",
+    "mistral",
+    "copy",
+    "clipboard",
+    "automation"
+  ],
+  "author": "SeradnaSchmid",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/seardnaschmid/firefox-extension-yt-transcript-fetcher/issues"
+  },
+  "homepage": "https://github.com/seardnaschmid/firefox-extension-yt-transcript-fetcher#readme",
+  "devDependencies": {
+    "web-ext": "^7.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

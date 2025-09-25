@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="redGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f44336;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d32f2f;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="lightGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffebee;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fce4ec;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="64" cy="64" r="56" fill="url(#redGradient)"/>
+  
+  <!-- Abstract wave/transcript lines -->
+  <path d="M32 48 Q44 40 56 48 Q68 56 80 48 Q92 40 96 48" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M32 58 Q44 50 56 58 Q68 66 80 58 Q92 50 96 58" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.8"/>
+  <path d="M32 68 Q44 60 56 68 Q68 76 80 68 Q92 60 96 68" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.6"/>
+  
+  <!-- Abstract processing symbol -->
+  <circle cx="88" cy="88" r="16" fill="url(#lightGradient)"/>
+  <circle cx="88" cy="88" r="8" fill="#f44336"/>
+  
+  <!-- Connection lines -->
+  <path d="M72 64 L80 80" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.7"/>
+  <path d="M80 80 L88 88" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.7"/>
+</svg>
