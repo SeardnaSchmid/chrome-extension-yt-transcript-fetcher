@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "YouTube Transcript & Summary v1.2.0",
+  "name": "YouTube Transcript & Summary",
   "version": "1.2.0",
   "description": "Extract and summarize YouTube video transcripts instantly! Copy transcripts and generate AI summaries with multiple prompts.",
   "permissions": [
